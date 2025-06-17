@@ -1,70 +1,63 @@
-﻿using UnityEngine;
-
-[RequireComponent(typeof(Rigidbody))]
-public class SpacecraftController : MonoBehaviour
+﻿using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
+using UnityEngine;
+public class SpacecraftController
 {
-    [Header("Movement")]
-    public float moveSpeed = 0f;
-    public float maxSpeed = 50f;
-    public float verticalSpeed = 5f;
-    public float brakeSpeed = 5f;
-    public float accelerationSpeed = 5f;
-
-    [Header("Rotation")]
-    public float rotationSpeed = 100f;
-    public float mouseSensitivity = 1.5f;
-    public float maxPitch = 80f;
-
-    private Rigidbody rb;
+    private float moveSpeed = 0f;
     private bool startMoving;
-
     private float yaw;
     private float pitch;
-
     private bool isRotating = false;
+    private SpacecraftView spacecraftView;
+    private SpacecraftScriptable spacecraftSO;
 
-    void Start()
+    public SpacecraftController(SpacecraftScriptable spacecraftSO)
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        this.spacecraftView = Object.Instantiate(spacecraftSO.spacecraftView);
+        this.spacecraftView.SetController(this);
+        this.spacecraftSO = spacecraftSO;
+    }
 
+    public void Configure()
+    {
+        spacecraftView.rb.freezeRotation = true;
         // Lock cursor for mouse look
         Cursor.lockState = CursorLockMode.Locked;
 
         // Initialize rotation values from current orientation
-        Vector3 euler = transform.eulerAngles;
+        Vector3 euler = spacecraftView.transform.eulerAngles;
         yaw = euler.y;
         pitch = euler.x;
     }
 
-    void FixedUpdate()
+    public void Update()
     {
         Vector3 moveDirection = Vector3.zero;
 
         // --- Movement ---
-        if (Input.GetKey(KeyCode.W) && moveSpeed < maxSpeed)
+        if (Input.GetKey(KeyCode.W) && moveSpeed < spacecraftSO.MaxSpeed)
         {
-            moveSpeed += accelerationSpeed;
+            moveSpeed += spacecraftSO.AccelerationSpeed;
             isRotating = true;
         }
         else
         if (Input.GetKey(KeyCode.S) && moveSpeed > 0)
         {
-            moveSpeed -= brakeSpeed;
+            moveSpeed -= spacecraftSO.BrakeSpeed;
         }
 
-        moveDirection += transform.forward * moveSpeed;
+        moveDirection += spacecraftView.transform.forward * moveSpeed;
 
         if (Input.GetKey(KeyCode.A))
         {
-            moveDirection += transform.up * verticalSpeed;
+            moveDirection += spacecraftView.transform.up * spacecraftSO.VerticalSpeed;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            moveDirection -= transform.up * verticalSpeed;
+            moveDirection -= spacecraftView.transform.up * spacecraftSO.VerticalSpeed;
         }
 
-        rb.velocity = moveDirection;
+        spacecraftView.rb.velocity = moveDirection;
 
 
         if (isRotating || Input.GetMouseButton(0))
@@ -72,13 +65,13 @@ public class SpacecraftController : MonoBehaviour
             float mouseX = Input.GetAxis("Mouse X");
             float mouseY = Input.GetAxis("Mouse Y");
 
-            yaw += mouseX * rotationSpeed * mouseSensitivity * Time.fixedDeltaTime;
-            pitch -= mouseY * rotationSpeed * mouseSensitivity * Time.fixedDeltaTime;
+            yaw += mouseX * spacecraftSO.RotationSpeed * spacecraftSO.MouseSensitivity * Time.fixedDeltaTime;
+            pitch -= mouseY * spacecraftSO.RotationSpeed * spacecraftSO.MouseSensitivity * Time.fixedDeltaTime;
 
-            pitch = Mathf.Clamp(pitch, -maxPitch, maxPitch);
+            pitch = Mathf.Clamp(pitch, -spacecraftSO.MaxPitch, spacecraftSO.MaxPitch);
 
             Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0f);
-            rb.MoveRotation(targetRotation);
+            spacecraftView.rb.MoveRotation(targetRotation);
         }
     }
 }
