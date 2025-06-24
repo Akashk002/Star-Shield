@@ -10,9 +10,9 @@ public class DroneController
     private DroneScriptable droneScriptable;
     private Transform initialPosition;
     private State state;
-    public DroneController(DroneView droneView, DroneScriptable droneScriptable)
+    public DroneController(DroneScriptable droneScriptable)
     {
-        this.droneView = Object.Instantiate(droneView);
+        this.droneView = Object.Instantiate(droneScriptable.droneView);
         this.droneView.SetController(this);
         this.droneScriptable = droneScriptable;
     }
@@ -105,6 +105,11 @@ public class DroneController
         droneView.transform.position = initialPosition.position;
         droneView.transform.rotation = initialPosition.rotation;
         Cursor.lockState = CursorLockMode.None; // Unlock cursor when deactivated
+    }
+
+    public DroneType GetDronetype()
+    {
+        return droneScriptable.droneType;
     }
 }
 

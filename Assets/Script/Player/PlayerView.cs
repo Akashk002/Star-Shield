@@ -48,12 +48,9 @@ public class PlayerView : MonoBehaviour
     internal void OnPlayerTriggerStay(GameObject gameObject)
     {
         IInteractable interactable;
-        if (gameObject.TryGetComponent(out interactable) && playerController.IsInteracted)
+        if (gameObject.TryGetComponent(out interactable) && !gameObject.GetComponent<Building>() && playerController.IsInteracted)
         {
             playerController.IsInteracted = false;
-
-            Debug.Log($"Interacting with {gameObject.name}");
-
             if (gameObject.GetComponent<Entrance>() || (gameObject.GetComponent<Rock>() && IsCarryBagPack()))
             {
                 interactable.Interact();

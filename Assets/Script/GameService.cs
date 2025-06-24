@@ -6,33 +6,27 @@ public class GameService : GenericMonoSingleton<GameService>
 {
     [SerializeField] private PlayerView playerView;
     [SerializeField] private PlayerScriptable PlayerScriptable;
-    [SerializeField] private DroneView droneView;
-    [SerializeField] private DroneScriptable droneScriptable;
+    [SerializeField] private List<DroneData> droneDatas = new List<DroneData>();
     [SerializeField] private List<SpacecraftData> spacecraftDatas = new List<SpacecraftData>();
 
-    public PlayerController playerController { get; private set; }
-    public DroneController droneController { get; private set; }
+    public PlayerService playerService { get; private set; }
+    public DroneService droneService { get; private set; }
     public SpacecraftService spacecraftService { get; private set; }
-    //public EventService eventService { get; private set; }
-
 
     // Start is called before the first frame update
     void Start()
     {
-        playerController = new PlayerController(playerView, PlayerScriptable);
-        //spacecraftService = new SpacecraftService(spacecraftDatas);
-        // droneController = new DroneController(droneView, droneScriptable);
-        //eventService = new EventService();
+        playerService = new PlayerService(playerView, PlayerScriptable);
+        droneService = new DroneService(droneDatas);
+        spacecraftService = new SpacecraftService(spacecraftDatas);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerController.CarryBagPack();
-        }
 
+        }
     }
 }
 

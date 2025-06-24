@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpacecraftService : MonoBehaviour
+public class SpacecraftService
 {
-    private List<SpacecraftData> spacecraftDatas;
-    SpacecraftController spacecraftController;
+    private List<SpacecraftData> spacecraftDatas = new List<SpacecraftData>();
+    private SpacecraftController spacecraftController;
 
     public SpacecraftService(List<SpacecraftData> spacecraftDatas)
     {
         this.spacecraftDatas = spacecraftDatas;
+    }
 
+    public void CreateSpacecraft(SpacecraftType spacecraftType)
+    {
+        SpacecraftData spacecraftData = spacecraftDatas.Find(data => data.spacecraftType == spacecraftType);
+        spacecraftController = new SpacecraftController(spacecraftData.spacecraftScriptable);
+        spacecraftController.Configure();
+    }
 
-
-        spacecraftController = new SpacecraftController(spacecraftDatas[0].spacecraftScriptable);
-
+    public SpacecraftController GetSpacecraftController()
+    {
+        return spacecraftController;
     }
 }

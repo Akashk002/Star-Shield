@@ -7,8 +7,8 @@ public class Rock : MonoBehaviour, IInteractable
     [SerializeField] private RockType rockType;
     public void Interact()
     {
-        GameService.Instance.playerController.AddRock(rockType);
         UIManager.Instance.GetInfoHandler().HideTextPopup();
+        GameService.Instance.playerService.GetPlayerController().AddRock(rockType);
         gameObject.SetActive(false);
     }
 

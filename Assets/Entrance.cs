@@ -44,17 +44,17 @@ public class Entrance : MonoBehaviour, IInteractable
     public void EnterRoom()
     {
         roomPanel.SetActive(true);
-        GameService.Instance.playerController.Deactivate();
+        GameService.Instance.playerService.GetPlayerController().Deactivate();
         playerEntered = true;
     }
+
     public void ExitRoom()
     {
         if (playerEntered)
         {
             roomPanel.SetActive(false);
-            GameService.Instance.playerController.Activate();
+            GameService.Instance.playerService.GetPlayerController().Activate();
             playerEntered = false;
         }
-
     }
 }

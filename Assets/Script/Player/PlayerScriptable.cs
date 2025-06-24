@@ -14,6 +14,7 @@ public class PlayerScriptable : ScriptableObject
     public float tiredness;
     public float tirednessIncRate;
     public int bagCapacity;
+    public float tirednessRecoverTime = 10f; // How fast tiredness recovers
 }
 
 [System.Serializable]

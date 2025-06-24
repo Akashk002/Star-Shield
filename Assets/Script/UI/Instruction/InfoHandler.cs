@@ -35,6 +35,7 @@ public class InfoHandler : MonoBehaviour
         InstructionSciprtableObject instruction = InstructionList.Find(i => i.instructionType == instructionType).instructionSciprtableObject;
 
         yield return new WaitForSeconds(instruction.WaitToTriggerDuration);
+
         showInstructionPopup(instruction);
 
         yield return new WaitForSeconds(instruction.DisplayDuration);
@@ -51,6 +52,7 @@ public class InfoHandler : MonoBehaviour
 
     private void showInstructionPopup(InstructionSciprtableObject instruction)
     {
+
         instructionsText.SetText(instruction.Instruction);
         instructionsText.gameObject.SetActive(true);
     }

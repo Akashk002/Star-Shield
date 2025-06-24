@@ -10,11 +10,13 @@ public class PlayerUIManager : MonoBehaviour
     [SerializeField] private Slider tirednessSlider;
     [SerializeField] private GridLayoutGroup stoneInfoPanel;
     [SerializeField] private Button bagPackButton;
+    [SerializeField] private Button takeRestButton;
     [SerializeField] private TextMeshProUGUI bagPackText;
 
     private void Start()
     {
         bagPackButton.onClick.AddListener(ToggleBagPack);
+        takeRestButton.onClick.AddListener(TakeRest);
     }
 
     public void SetRockCount(RockType rockType, int Val)
@@ -29,6 +31,11 @@ public class PlayerUIManager : MonoBehaviour
         tirednessSlider.value = value;
     }
 
+    public void TakeRest()
+    {
+        GameService.Instance.playerService.GetPlayerController().TakeRest();
+    }
+
     public void ToggleBagPack()
     {
         if (stoneInfoPanel != null)
@@ -36,7 +43,7 @@ public class PlayerUIManager : MonoBehaviour
             stoneInfoPanel.gameObject.SetActive(!stoneInfoPanel.gameObject.activeSelf);
             bagPackButton.targetGraphic.color = stoneInfoPanel.gameObject.activeSelf ? new Color(1, 1, 1, 0.5f) : Color.white;
             bagPackText.text = stoneInfoPanel.gameObject.activeSelf ? "Click to drop the bag" : "Click to get the bag";
-            GameService.Instance.playerController.CarryBagPack();
+            GameService.Instance.playerService.GetPlayerController().CarryBagPack();
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072050913e55f88488279841f28d8fbb, type: 3}
   m_Name: BagFull
   m_EditorClassIdentifier: 
-  InstructionType: 0
+  InstructionType: 3
   Instruction: Your bag is full, and there's no room for a stone
   DisplayDuration: 3
   WaitToTriggerDuration: 0

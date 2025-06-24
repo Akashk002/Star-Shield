@@ -14,6 +14,7 @@ public class PlayerController
     private State state;
     private int rockCount;
     public bool IsInteracted;
+    private LTDescr tireNessleenTween;
 
     public PlayerController(PlayerView playerPrefab, PlayerScriptable playerScriptable)
     {
@@ -47,9 +48,9 @@ public class PlayerController
         PlayerMove(v);
     }
 
-    private void SetTiredness()
+    public void SetTiredness(float val)
     {
-        playerScriptable.tiredness += Mathf.Abs(moveSpeed * playerScriptable.tirednessIncRate);
+        playerScriptable.tiredness += val * playerScriptable.tirednessIncRate;
         Mathf.Clamp(playerScriptable.tiredness, 0, playerScriptable.maxTiredness);
         UIManager.Instance.playerPanel.SetTiredness(playerScriptable.tiredness, playerScriptable.maxTiredness);
     }
@@ -75,7 +76,7 @@ public class PlayerController
 
             playerView.controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime * ((100 - playerScriptable.tiredness) / 100));
 
-            SetTiredness();
+            SetTiredness(moveSpeed);
         }
 
         // Apply gravity
@@ -98,6 +99,12 @@ public class PlayerController
         state = State.Activate;
         playerView.gameObject.SetActive(true);
         playerView.cam.Priority = 1;
+
+        if (tireNessleenTween != null)
+        {
+            LeanTween.cancel(tireNessleenTween.id);
+            tireNessleenTween = null;
+        }
     }
 
     public void Deactivate()
@@ -109,7 +116,7 @@ public class PlayerController
 
     public void AddRock(RockType rockType)
     {
-        if (rockCount <= playerScriptable.bagCapacity)
+        if (GetTotalRock() < playerScriptable.bagCapacity)
         {
             RockData rockData = playerScriptable.rockDatas.Find(r => r.RockType == rockType);
             rockData.AddRock();
@@ -117,9 +124,20 @@ public class PlayerController
         }
         else
         {
-            Debug.Log("Bag is full, cannot add more rocks.");
+            UIManager.Instance.GetInfoHandler().ShowInstruction(InstructionType.BagFull);
         }
     }
+
+    private int GetTotalRock()
+    {
+        int totalCount = 0;
+        foreach (var rockData in playerScriptable.rockDatas)
+        {
+            totalCount += rockData.rockCount;
+        }
+        return totalCount;
+    }
+
     public void CarryBagPack()
     {
         playerView.CarryBagPack();
@@ -132,5 +150,15 @@ public class PlayerController
     public PlayerScriptable GetPlayerScriptable()
     {
         return playerScriptable;
+    }
+
+    public void TakeRest()
+    {
+        float tirednessRecoverTime = playerScriptable.tirednessRecoverTime * (playerScriptable.maxTiredness / playerScriptable.maxTiredness);
+        tireNessleenTween = LeanTween.value(playerScriptable.maxTiredness, 0, tirednessRecoverTime).setOnUpdate((float val) =>
+        {
+            playerScriptable.tiredness = val;
+            UIManager.Instance.playerPanel.SetTiredness(playerScriptable.tiredness, playerScriptable.maxTiredness);
+        }).setOnComplete(() => tireNessleenTween = null);
     }
 }
