@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class UIManager : GenericMonoSingleton<UIManager>
+{
+    [Header("UI Panels")]
+    public PlayerUIManager playerPanel;
+    public SpaceCraftUIManager spacecraftPanel;
+    public InfoHandler infoHandler;
+
+    [Header("Room Panels")]
+    public GameObject HomePanel;
+    public GameObject DroneControlPanel;
+
+    public void ShowPanel(PanelType panelType)
+    {
+        playerPanel.gameObject.SetActive(false);
+        spacecraftPanel.gameObject.SetActive(false);
+
+        switch (panelType)
+        {
+            case PanelType.Player:
+                playerPanel.gameObject.SetActive(true);
+                break;
+            case PanelType.Spacecraft:
+                spacecraftPanel.gameObject.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public InfoHandler GetInfoHandler()
+    {
+        return infoHandler;
+    }
+}
+
+public enum PanelType
+{
+    Player,
+    Spacecraft,
+}
