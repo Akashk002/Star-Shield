@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,12 @@ public class DroneService
 {
     private Dictionary<DroneType, DroneController> droneControllers = new Dictionary<DroneType, DroneController>();
     private List<DroneData> droneDatas = new List<DroneData>();
+    public DroneController currentDroneController;
+
     public DroneService(List<DroneData> droneDatas)
     {
         this.droneDatas = droneDatas;
-        //CreateAllDrone();
+        CreateAllDrone();
     }
 
     public void CreateAllDrone()
@@ -38,8 +41,30 @@ public class DroneService
     }
 
 
-    public DroneController GetDroneController(DroneType droneType)
+    public DroneController GetDroneController()
     {
-        return droneControllers[droneType];
+        return currentDroneController;
+    }
+
+    public void StartDrone(DroneType droneType)
+    {
+        currentDroneController = droneControllers[droneType];
+        currentDroneController.Activate();
+    }
+
+    public void SwitchDrone()
+    {
+        currentDroneController.Deactivate();
+        DroneType otherDroneType = (currentDroneController.GetDronetype() == DroneType.CarrierDrone) ? DroneType.SecurityDrone : DroneType.CarrierDrone;
+        StartDrone(otherDroneType);
+    }
+
+    public void StopDrone()
+    {
+        if (currentDroneController != null)
+        {
+            currentDroneController.Deactivate();
+            currentDroneController = null;
+        }
     }
 }

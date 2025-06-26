@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Entrance : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string objectName;
+    [SerializeField] private EntranceType entranceType;
     [SerializeField] private GameObject roomPanel;
     private bool playerEntered;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ExitRoom();
         }
@@ -18,7 +18,8 @@ public class Entrance : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (roomPanel && other.GetComponent<PlayerTrigger>())
+        TriggerGameObject triggerGameObject;
+        if (roomPanel && TryGetComponent(out triggerGameObject) && triggerGameObject.triggerByEntrance)
         {
             UIManager.Instance.GetInfoHandler().ShowInstruction(InstructionType.EnterRoom);
         }
@@ -34,11 +35,16 @@ public class Entrance : MonoBehaviour, IInteractable
     }
     public string GetName()
     {
-        if (objectName == null)
-        {
-            return gameObject.name;
-        }
-        return objectName;
+        return SplitCamelCase(entranceType.ToString());
+    }
+
+    public static string SplitCamelCase(string input)
+    {
+        return System.Text.RegularExpressions.Regex.Replace(
+            input,
+            "(\\B[A-Z])",
+            " $1"
+        );
     }
 
     public void EnterRoom()
@@ -46,6 +52,12 @@ public class Entrance : MonoBehaviour, IInteractable
         roomPanel.SetActive(true);
         GameService.Instance.playerService.GetPlayerController().Deactivate();
         playerEntered = true;
+
+        if (entranceType == EntranceType.DroneControlRoomEntrance)
+        {
+            UIManager.Instance.ShowPanel(PanelType.Drone);
+            GameService.Instance.droneService.StartDrone(DroneType.CarrierDrone);
+        }
     }
 
     public void ExitRoom()
@@ -55,6 +67,17 @@ public class Entrance : MonoBehaviour, IInteractable
             roomPanel.SetActive(false);
             GameService.Instance.playerService.GetPlayerController().Activate();
             playerEntered = false;
+
+            if (entranceType == EntranceType.DroneControlRoomEntrance)
+            {
+                GameService.Instance.droneService.StopDrone();
+            }
         }
     }
+}
+
+public enum EntranceType
+{
+    HomeEntrance,
+    DroneControlRoomEntrance,
 }

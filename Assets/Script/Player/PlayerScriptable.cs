@@ -13,7 +13,7 @@ public class PlayerScriptable : ScriptableObject
     public float maxTiredness = 60;
     public float tiredness;
     public float tirednessIncRate;
-    public int bagCapacity;
+    public int RockStorageCapacity;
     public float tirednessRecoverTime = 10f; // How fast tiredness recovers
 }
 

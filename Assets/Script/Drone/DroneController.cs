@@ -3,13 +3,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class DroneController
 {
+    private float moveSpeed = 0f;
     private float yaw;
     private float pitch;
     private bool isRotating = false;
     private DroneView droneView;
     private DroneScriptable droneScriptable;
     private Transform initialPosition;
-    private State state;
+    private DroneState droneState;
+    public bool IsInteracted;
     public DroneController(DroneScriptable droneScriptable)
     {
         this.droneView = Object.Instantiate(droneScriptable.droneView);
@@ -21,20 +23,33 @@ public class DroneController
     {
         initialPosition = droneView.transform;
         droneView.rb.freezeRotation = true;
-        // Lock cursor for mouse look
-        Cursor.lockState = CursorLockMode.Locked;
 
         // Initialize rotation values from current orientation
         Vector3 euler = droneView.transform.eulerAngles;
         yaw = euler.y;
         pitch = euler.x;
+        droneState = DroneState.Deactivate; // Start in deactivated state
     }
+
+    public void Interact() => IsInteracted = Input.GetKeyDown(KeyCode.E) ? true : (Input.GetKeyUp(KeyCode.E) ? false : IsInteracted);
 
     public void Update()
     {
-        if (state == State.Activate)
+        if (droneState == DroneState.Activate)
         {
             Move();
+
+        }
+        if (GetDronetype() == DroneType.SecurityDrone)
+        {
+            if (droneState == DroneState.Surveillance)
+            {
+                Surveillancing();
+            }
+        }
+        else
+        {
+            Interact();
         }
     }
 
@@ -42,19 +57,30 @@ public class DroneController
     {
         Vector3 moveDirection = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && moveSpeed < droneScriptable.maxSpeed)
         {
-            moveDirection = droneView.transform.forward * droneScriptable.Speed;
+            moveSpeed += droneScriptable.AccelerationSpeed;
+            moveDirection = droneView.transform.forward * moveSpeed;
             isRotating = true;
         }
-
-        if (Input.GetKey(KeyCode.A))
+        else
+        if (Input.GetKey(KeyCode.S) && moveSpeed < droneScriptable.maxSpeed)
         {
-            moveDirection = droneView.transform.up * droneScriptable.VerticalSpeed;
+            moveSpeed += droneScriptable.AccelerationSpeed;
+            moveDirection = -droneView.transform.forward * moveSpeed;
+            isRotating = true;
         }
-        if (Input.GetKey(KeyCode.D))
+        else
         {
-            moveDirection = -droneView.transform.up * droneScriptable.VerticalSpeed;
+            moveSpeed = 0f; // Stop moving if no key is pressed
+            if (Input.GetKey(KeyCode.A))
+            {
+                moveDirection = droneView.transform.up * droneScriptable.verticalSpeed;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                moveDirection = -droneView.transform.up * droneScriptable.verticalSpeed;
+            }
         }
 
         droneView.rb.velocity = moveDirection;
@@ -65,10 +91,10 @@ public class DroneController
             float mouseX = Input.GetAxis("Mouse X");
             float mouseY = Input.GetAxis("Mouse Y");
 
-            yaw += mouseX * droneScriptable.RotationSpeed * droneScriptable.MouseSensitivity * Time.fixedDeltaTime;
-            pitch -= mouseY * droneScriptable.RotationSpeed * droneScriptable.MouseSensitivity * Time.fixedDeltaTime;
+            yaw += mouseX * droneScriptable.rotationSpeed * droneScriptable.mouseSensitivity * Time.fixedDeltaTime;
+            pitch -= mouseY * droneScriptable.rotationSpeed * droneScriptable.mouseSensitivity * Time.fixedDeltaTime;
 
-            pitch = Mathf.Clamp(pitch, -droneScriptable.MaxPitch, droneScriptable.MaxPitch);
+            pitch = Mathf.Clamp(pitch, -droneScriptable.maxPitch, droneScriptable.maxPitch);
 
             Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0f);
             droneView.rb.MoveRotation(targetRotation);
@@ -85,18 +111,49 @@ public class DroneController
             droneView.cam.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 30f, 90f);
         }
     }
+
+    private void Surveillancing()
+    {
+        // Lock X rotation by keeping rotation flat (optional if needed)
+        Vector3 currentEuler = droneView.transform.eulerAngles;
+        currentEuler.x = 0f; // Keeps drone upright (no pitch)
+        droneView.transform.eulerAngles = currentEuler;
+
+        // Apply Y-axis rotation (surveillance spin)
+        float yRotation = droneScriptable.rotationSpeed / 3 * Time.deltaTime;
+        droneView.transform.Rotate(Vector3.up * 30f * Time.deltaTime, Space.Self); // Rotate around local Y axis
+    }
+
+
+
     public void Activate()
     {
-        state = State.Activate;
+        if (GetDronetype() == DroneType.SecurityDrone && droneState == DroneState.Surveillance) return;
+
+        droneState = DroneState.Activate;
         droneView.cam.gameObject.SetActive(true);
     }
 
     public void Deactivate()
     {
-        state = State.deactivate;
+        if (GetDronetype() == DroneType.SecurityDrone && droneState == DroneState.Surveillance) return;
+
+        droneState = DroneState.Deactivate;
         droneView.cam.gameObject.SetActive(false);
         isRotating = false;
-        Reset();
+
+    }
+
+    public void ToggleDroneSurveillanceState()
+    {
+        if (droneState == DroneState.Surveillance)
+        {
+            droneState = DroneState.Activate;
+            Activate();
+            return;
+        }
+
+        droneState = DroneState.Surveillance;
     }
 
     private void Reset()
@@ -111,5 +168,47 @@ public class DroneController
     {
         return droneScriptable.droneType;
     }
+
+    public DroneScriptable GetDroneScriptable()
+    {
+        return droneScriptable;
+    }
+
+    public void AddRock(RockType rockType)
+    {
+        if (GetTotalRock() < droneScriptable.RockStorageCapacity)
+        {
+            RockData rockData = droneScriptable.rockDatas.Find(r => r.RockType == rockType);
+            rockData.AddRock();
+            UIManager.Instance.droneUIManager.SetRockCount(rockType, rockData.rockCount);
+        }
+        else
+        {
+            UIManager.Instance.GetInfoHandler().ShowInstruction(InstructionType.BagFull);
+        }
+    }
+
+    private int GetTotalRock()
+    {
+        int totalCount = 0;
+        foreach (var rockData in droneScriptable.rockDatas)
+        {
+            totalCount += rockData.rockCount;
+        }
+        return totalCount;
+    }
+
+    public DroneState GetDroneState()
+    {
+        return droneState;
+    }
 }
+
+public enum DroneState
+{
+    Activate,
+    Deactivate,
+    Surveillance,
+}
+
 

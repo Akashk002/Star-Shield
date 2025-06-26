@@ -7,15 +7,21 @@ public class DroneScriptable : ScriptableObject
 {
     public DroneType droneType;
     public DroneView droneView;
+    public float droneBattery;
 
     [Header("Movement")]
-    public float Speed;
-    public float VerticalSpeed;
+    public float maxSpeed;
+    public float verticalSpeed;
+    public float AccelerationSpeed;
 
     [Header("Rotation")]
-    public float RotationSpeed;
-    public float MouseSensitivity;
-    public float MaxPitch;
+    public float rotationSpeed;
+    public float mouseSensitivity;
+    public float maxPitch;
+
+    [Header("Rock Detail")]
+    public List<RockData> rockDatas = new List<RockData>();
+    public float RockStorageCapacity;
 }
 
 [System.Serializable]

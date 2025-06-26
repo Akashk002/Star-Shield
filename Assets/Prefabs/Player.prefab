@@ -419,7 +419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755485502154099868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31390858, y: 1e-45, z: -0, w: 0.94945323}
+  m_LocalRotation: {x: 0.31390858, y: -3e-45, z: 1e-45, w: 0.94945323}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1138,7 +1138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3792960012785912582}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2264088, y: -0.00000001873777, z: 0.0000000043554986, w: 0.9740324}
+  m_LocalRotation: {x: 0.2264088, y: 0.00000001873777, z: -0.0000000043554986, w: 0.9740324}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2811,8 +2811,8 @@ GameObject:
   - component: {fileID: 7752833189837777142}
   - component: {fileID: 1168986529162409308}
   - component: {fileID: 8515457801526996445}
-  - component: {fileID: 7586317661701055341}
   - component: {fileID: 1082492472956706135}
+  - component: {fileID: 8864265710013420480}
   m_Layer: 0
   m_Name: sky_protectiv_suit_rig_UNITY
   m_TagString: Untagged
@@ -2880,19 +2880,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 1}
---- !u!114 &7586317661701055341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7465161689209548088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb5752aafe471846847fc90e8346607, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerView: {fileID: 7615842285618202004}
 --- !u!54 &1082492472956706135
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2920,6 +2907,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8864265710013420480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7465161689209548088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf154067edefc54e8ab1734c47410a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerByEntrance: 1
 --- !u!1 &7485776214479528761
 GameObject:
   m_ObjectHideFlags: 0

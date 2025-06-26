@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class PlayerView : MonoBehaviour, ITriggerObject
 {
     public CinemachineFreeLook cam;
     public CharacterController controller;
@@ -27,11 +27,10 @@ public class PlayerView : MonoBehaviour
         if (playerController != null)
         {
             playerController.Update();
-            playerController.Interact();
         }
     }
 
-    public void OnPlayerTriggerEnter(GameObject gameObject)
+    public void TriggerEnter(GameObject gameObject)
     {
         IInteractable interactable;
         if (gameObject.TryGetComponent(out interactable))
@@ -45,7 +44,7 @@ public class PlayerView : MonoBehaviour
         }
     }
 
-    internal void OnPlayerTriggerStay(GameObject gameObject)
+    public void TriggerStay(GameObject gameObject)
     {
         IInteractable interactable;
         if (gameObject.TryGetComponent(out interactable) && !gameObject.GetComponent<Building>() && playerController.IsInteracted)
@@ -54,6 +53,12 @@ public class PlayerView : MonoBehaviour
             if (gameObject.GetComponent<Entrance>() || (gameObject.GetComponent<Rock>() && IsCarryBagPack()))
             {
                 interactable.Interact();
+
+                if (gameObject.GetComponent<Rock>())
+                {
+                    Rock rock = gameObject.GetComponent<Rock>();
+                    playerController.AddRock(rock.GetRockType());
+                }
             }
             else
             {
@@ -62,7 +67,7 @@ public class PlayerView : MonoBehaviour
         }
     }
 
-    public void OnPlayerTriggerExit(GameObject gameObject)
+    public void TriggerExit(GameObject gameObject)
     {
         if (gameObject.GetComponent<IInteractable>() != null)
         {

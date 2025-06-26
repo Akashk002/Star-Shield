@@ -8,6 +8,7 @@ public class UIManager : GenericMonoSingleton<UIManager>
     [Header("UI Panels")]
     public PlayerUIManager playerPanel;
     public SpaceCraftUIManager spacecraftPanel;
+    public DroneUIManager droneUIManager;
     public InfoHandler infoHandler;
 
     [Header("Room Panels")]
@@ -18,6 +19,7 @@ public class UIManager : GenericMonoSingleton<UIManager>
     {
         playerPanel.gameObject.SetActive(false);
         spacecraftPanel.gameObject.SetActive(false);
+        droneUIManager.gameObject.SetActive(false);
 
         switch (panelType)
         {
@@ -26,6 +28,9 @@ public class UIManager : GenericMonoSingleton<UIManager>
                 break;
             case PanelType.Spacecraft:
                 spacecraftPanel.gameObject.SetActive(true);
+                break;
+            case PanelType.Drone:
+                droneUIManager.gameObject.SetActive(true);
                 break;
             default:
                 break;
@@ -42,4 +47,5 @@ public enum PanelType
 {
     Player,
     Spacecraft,
+    Drone,
 }

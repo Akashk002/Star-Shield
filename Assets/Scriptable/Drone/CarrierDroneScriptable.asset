@@ -9,13 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c1f5281571bbe428c970b4dafda3b9, type: 3}
-  m_Name: PlayerScriptable
+  m_Script: {fileID: 11500000, guid: 69dbab9571c446742b299e4594d92842, type: 3}
+  m_Name: CarrierDroneScriptable
   m_EditorClassIdentifier: 
-  walkSpeed: 4
-  runSpeed: 12
-  rotationSmoothTime: 0.1
-  gravity: -9.81
+  droneType: 0
+  droneView: {fileID: 558873421579425462, guid: b281a54c2718f1a41b2189142d4c9384, type: 3}
+  droneBattery: 100
+  maxSpeed: 100
+  verticalSpeed: 10
+  AccelerationSpeed: 0.1
+  rotationSpeed: 50
+  mouseSensitivity: 1.5
+  maxPitch: 80
   rockDatas:
   - RockType: 0
     rockCount: 0
@@ -29,8 +34,4 @@ MonoBehaviour:
     rockCount: 0
   - RockType: 5
     rockCount: 0
-  maxTiredness: 50
-  tiredness: 34.22821
-  tirednessIncRate: 0.0001
-  bagCapacity: 20
-  tirednessRecoverTime: 15
+  RockStorageCapacity: 100

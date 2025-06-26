@@ -14,6 +14,7 @@ public class PlayerController
     private State state;
     private int rockCount;
     public bool IsInteracted;
+
     private LTDescr tireNessleenTween;
 
     public PlayerController(PlayerView playerPrefab, PlayerScriptable playerScriptable)
@@ -25,8 +26,9 @@ public class PlayerController
         CreateStateMachine();
         stateMachine.ChangeState(PlayerStates.Idle);
         playerScriptable.tiredness = 0f;
-    }
 
+        Activate();
+    }
     public void Interact() => IsInteracted = Input.GetKeyDown(KeyCode.E) ? true : (Input.GetKeyUp(KeyCode.E) ? false : IsInteracted);
 
     private void CreateStateMachine() => stateMachine = new PlayerStateMachine(this);
@@ -37,6 +39,7 @@ public class PlayerController
         {
             GetInput();
             stateMachine.Update();
+            Interact();
         }
     }
 
@@ -46,13 +49,6 @@ public class PlayerController
         bool isRunning = Input.GetKey(KeyCode.Space);
         moveSpeed = (v != 0) ? (!isRunning) ? playerScriptable.walkSpeed : playerScriptable.runSpeed : 0;
         PlayerMove(v);
-    }
-
-    public void SetTiredness(float val)
-    {
-        playerScriptable.tiredness += val * playerScriptable.tirednessIncRate;
-        Mathf.Clamp(playerScriptable.tiredness, 0, playerScriptable.maxTiredness);
-        UIManager.Instance.playerPanel.SetTiredness(playerScriptable.tiredness, playerScriptable.maxTiredness);
     }
 
     public void PlayerMove(float v)
@@ -96,6 +92,7 @@ public class PlayerController
 
     public void Activate()
     {
+        UIManager.Instance.ShowPanel(PanelType.Player);
         state = State.Activate;
         playerView.gameObject.SetActive(true);
         playerView.cam.Priority = 1;
@@ -116,7 +113,7 @@ public class PlayerController
 
     public void AddRock(RockType rockType)
     {
-        if (GetTotalRock() < playerScriptable.bagCapacity)
+        if (GetTotalRock() < playerScriptable.RockStorageCapacity)
         {
             RockData rockData = playerScriptable.rockDatas.Find(r => r.RockType == rockType);
             rockData.AddRock();
@@ -152,10 +149,18 @@ public class PlayerController
         return playerScriptable;
     }
 
+    public void SetTiredness(float val)
+    {
+        int extraWeitht = playerView.IsCarryBagPack() ? 2 : 1;
+        playerScriptable.tiredness += val * playerScriptable.tirednessIncRate * extraWeitht;
+        Mathf.Clamp(playerScriptable.tiredness, 0, playerScriptable.maxTiredness);
+        UIManager.Instance.playerPanel.SetTiredness(playerScriptable.tiredness, playerScriptable.maxTiredness);
+    }
+
     public void TakeRest()
     {
         float tirednessRecoverTime = playerScriptable.tirednessRecoverTime * (playerScriptable.maxTiredness / playerScriptable.maxTiredness);
-        tireNessleenTween = LeanTween.value(playerScriptable.maxTiredness, 0, tirednessRecoverTime).setOnUpdate((float val) =>
+        tireNessleenTween = LeanTween.value(playerScriptable.tiredness, 0, tirednessRecoverTime).setOnUpdate((float val) =>
         {
             playerScriptable.tiredness = val;
             UIManager.Instance.playerPanel.SetTiredness(playerScriptable.tiredness, playerScriptable.maxTiredness);

@@ -8,7 +8,6 @@ public class Rock : MonoBehaviour, IInteractable
     public void Interact()
     {
         UIManager.Instance.GetInfoHandler().HideTextPopup();
-        GameService.Instance.playerService.GetPlayerController().AddRock(rockType);
         gameObject.SetActive(false);
     }
 
