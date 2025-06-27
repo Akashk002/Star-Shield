@@ -12,6 +12,7 @@ public class DroneController
     private Transform initialPosition;
     private DroneState droneState;
     public bool IsInteracted;
+    private LTDescr batteryLeenTween;
     public DroneController(DroneScriptable droneScriptable)
     {
         this.droneView = Object.Instantiate(droneScriptable.droneView);
@@ -62,6 +63,7 @@ public class DroneController
             moveSpeed += droneScriptable.AccelerationSpeed;
             moveDirection = droneView.transform.forward * moveSpeed;
             isRotating = true;
+            SetBattery(moveSpeed);
         }
         else
         if (Input.GetKey(KeyCode.S) && moveSpeed < droneScriptable.maxSpeed)
@@ -69,6 +71,7 @@ public class DroneController
             moveSpeed += droneScriptable.AccelerationSpeed;
             moveDirection = -droneView.transform.forward * moveSpeed;
             isRotating = true;
+            SetBattery(moveSpeed);
         }
         else
         {
@@ -84,7 +87,6 @@ public class DroneController
         }
 
         droneView.rb.velocity = moveDirection;
-
 
         if (isRotating || Input.GetMouseButton(0))
         {
@@ -104,11 +106,12 @@ public class DroneController
 
         if (scroll != 0)
         {
-            Debug.Log("Mouse scrolled: " + scroll);
-
             // Example: Zoom a camera
             droneView.cam.fieldOfView -= scroll * 10f;
-            droneView.cam.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 30f, 90f);
+
+            //droneView.cam.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 0f, 60f);
+
+            Debug.Log("Camera FOV: " + "," + scroll + "," + droneView.cam.fieldOfView);
         }
     }
 
@@ -132,6 +135,7 @@ public class DroneController
 
         droneState = DroneState.Activate;
         droneView.cam.gameObject.SetActive(true);
+        UIManager.Instance.droneUIManager.currentDroneScriptable = droneScriptable;
     }
 
     public void Deactivate()
@@ -201,6 +205,21 @@ public class DroneController
     public DroneState GetDroneState()
     {
         return droneState;
+    }
+
+    public void SetBattery(float val)
+    {
+        droneScriptable.droneBattery -= val * droneScriptable.droneBatteryDecRate;
+        Mathf.Clamp(droneScriptable.droneBattery, 0, 100);
+    }
+
+    public void ChargeBattery()
+    {
+        float chargingRate = droneScriptable.droneBatteryChargingTime * (droneScriptable.droneBattery / 100);
+        batteryLeenTween = LeanTween.value(droneScriptable.droneBattery, 100, chargingRate).setOnUpdate((float val) =>
+        {
+            droneScriptable.droneBattery = val;
+        }).setOnComplete(() => batteryLeenTween = null);
     }
 }
 

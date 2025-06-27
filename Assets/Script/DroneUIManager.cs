@@ -14,7 +14,7 @@ public class DroneUIManager : MonoBehaviour
     [SerializeField] private Button ToggleSurveillanceButton;
     [SerializeField] private TextMeshProUGUI ToggleSurveillanceButtonText;
     [SerializeField] private Slider batterySlider;
-    private DroneScriptable currentDroneScriptable;
+    public DroneScriptable currentDroneScriptable;
 
     private void Start()
     {
@@ -36,7 +36,6 @@ public class DroneUIManager : MonoBehaviour
     private void SwitchDrone()
     {
         GameService.Instance.droneService.SwitchDrone();
-        currentDroneScriptable = GameService.Instance.droneService.currentDroneController.GetDroneScriptable();
         stoneInfoPanel.gameObject.SetActive(currentDroneScriptable.droneType == DroneType.CarrierDrone);
         ToggleSurveillanceButton.gameObject.SetActive(currentDroneScriptable.droneType == DroneType.SecurityDrone);
         UpdateSwitchDroneButtonText();

@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePrefab: {fileID: 1856121259901488545}
+  triggerByEntrance: 0
 --- !u!135 &8093954887358051950
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -292,5 +293,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 8.88, y: -5.14, z: 0.0030079498}
+  m_Radius: 7
+  m_Center: {x: 6, y: -3, z: 0}

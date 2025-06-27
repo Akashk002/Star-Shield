@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerGameObject : MonoBehaviour
 {
-    private GameObject gamePrefab;
+    public GameObject gamePrefab;
     private ITriggerObject triggerObject;
     public bool triggerByEntrance;
 

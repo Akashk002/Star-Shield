@@ -15,6 +15,8 @@ MonoBehaviour:
   droneType: 0
   droneView: {fileID: 558873421579425462, guid: b281a54c2718f1a41b2189142d4c9384, type: 3}
   droneBattery: 100
+  droneBatteryDecRate: 0.00001
+  droneBatteryChargingTime: 30
   maxSpeed: 100
   verticalSpeed: 10
   AccelerationSpeed: 0.1

@@ -19,7 +19,7 @@ public class Entrance : MonoBehaviour, IInteractable
     private void OnTriggerEnter(Collider other)
     {
         TriggerGameObject triggerGameObject;
-        if (roomPanel && TryGetComponent(out triggerGameObject) && triggerGameObject.triggerByEntrance)
+        if (roomPanel && other.TryGetComponent(out triggerGameObject) && triggerGameObject.triggerByEntrance)
         {
             UIManager.Instance.GetInfoHandler().ShowInstruction(InstructionType.EnterRoom);
         }
