@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 841435937050009337}
   - component: {fileID: 3583064314968778447}
   - component: {fileID: -8711066323312118062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: JDAM2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 3546835644769009045, guid: 883c57d79c485b9428769b5a299f6eda, type: 3}
       propertyPath: m_Name
       value: JDAM (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546835644769009045, guid: 883c57d79c485b9428769b5a299f6eda, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

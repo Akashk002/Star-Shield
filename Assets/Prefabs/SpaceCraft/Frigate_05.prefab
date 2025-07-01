@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2495982797975544944}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 702884143950280881}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8947332209423657468}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 1785474406537293101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.93, z: -3.94}
+  m_LocalPosition: {x: 0, y: 11.66, z: 5.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1447524569827214567}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6604512241492752273}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8732869323162349365}
   - component: {fileID: 207198171360531985}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,8 +180,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6720907335811659011}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14521167, y: 0.000015422014, z: -0.0000022634474, w: 0.9894006}
-  m_LocalPosition: {x: -0.0004272461, y: 18.803465, z: -23.518372}
+  m_LocalRotation: {x: 0.14521201, y: 0.00000925325, z: -0.0000013580777, w: 0.9894006}
+  m_LocalPosition: {x: -0.0006713867, y: 19.533524, z: -14.128723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 8265694943561735480}
   - component: {fileID: 5491968616513212894}
   - component: {fileID: -4406730676619056594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Frigate_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7005939440928788443}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 1558960041064091890}
   - component: {fileID: 8067454558505893360}
   - component: {fileID: 2627666511252398147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,6 +546,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 62f164760e9fd2d41b569f47cae1aeab, type: 3}
       propertyPath: m_Name
       value: Frigate_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 62f164760e9fd2d41b569f47cae1aeab, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

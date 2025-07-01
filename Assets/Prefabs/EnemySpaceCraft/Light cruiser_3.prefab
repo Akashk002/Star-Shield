@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6594598465599009317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootingPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7665666668175319051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 5306718490113841303}
   - component: {fileID: 3500809671774984904}
   - component: {fileID: 5990476991369819846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light cruiser_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,6 +186,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3f8e17b6fb54f0b48a4f946148494efe, type: 3}
       propertyPath: m_Name
       value: Light cruiser_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f8e17b6fb54f0b48a4f946148494efe, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

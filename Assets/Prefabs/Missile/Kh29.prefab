@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 841435937050009337}
   - component: {fileID: 3583064314968778447}
   - component: {fileID: -8711066323312118062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kh29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 4193827622837945405, guid: 9b736306612f4f24785a8c1680ddf64b, type: 3}
       propertyPath: m_Name
       value: Kh-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193827622837945405, guid: 9b736306612f4f24785a8c1680ddf64b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

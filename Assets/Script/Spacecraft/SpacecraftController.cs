@@ -1,11 +1,12 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 public class SpacecraftController
 {
     private float moveSpeed = 0f;
+    private float range = 0f;
     private float missileCount = 0f;
-    private bool startMoving;
     private float yaw;
     private float pitch;
     private bool isRotating = false;
@@ -13,7 +14,6 @@ public class SpacecraftController
     private SpacecraftScriptable spacecraftSO;
     private Transform initialTransform;
     private State state;
-    private bool isAiming = false;
     private Vector3 currentTargetPosition;
 
     public SpacecraftController(SpacecraftScriptable spacecraftSO)
@@ -28,6 +28,7 @@ public class SpacecraftController
         initialTransform = spacecraftView.transform;
         spacecraftView.rb.freezeRotation = true;
         missileCount = spacecraftSO.missileCapacity;
+        range = spacecraftSO.maxRange;
         // Lock cursor for mouse look
         //Cursor.lockState = CursorLockMode.Locked;
 
@@ -36,38 +37,27 @@ public class SpacecraftController
         yaw = euler.y;
         pitch = euler.x;
 
-        // Deactivate();
+        Activate();
     }
 
     public void Update()
     {
         if (state != State.Activate) return;
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            isAiming = true;
-            //Cursor.lockState = CursorLockMode.None;
-        }
-        else if (Input.GetMouseButtonUp(1))
-        {
-            isAiming = false;
-            //Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        if (isAiming)
+        if (Input.GetMouseButtonDown(0))
         {
             AimAtTarget();
-            if (Input.GetMouseButtonDown(0))
-            {
-                FireMissileAtMouseTarget();
-            }
+            FireMissileAtTarget();
         }
-        else
-        {
-            Move();
-        }
+
+        Move();
     }
 
+    public void SetRange(float value)
+    {
+        range -= Time.deltaTime * value * 0.0001f;
+        Mathf.Clamp(range, 0f, spacecraftSO.maxRange);
+    }
 
     private void Move()
     {
@@ -89,6 +79,8 @@ public class SpacecraftController
 
         // --- Forward Movement ---
         moveDirection += spacecraftView.transform.forward * moveSpeed;
+
+        SetRange(moveSpeed);
 
         // --- Vertical Movement ---
         if (Input.GetKey(KeyCode.A))
@@ -128,7 +120,6 @@ public class SpacecraftController
     {
         state = State.deactivate;
         spacecraftView.cam.Priority = 0;
-        Reset();
     }
 
     private void Reset()
@@ -148,22 +139,20 @@ public class SpacecraftController
 
     private void AimAtTarget()
     {
-        Ray ray = spacecraftView.Camera.ScreenPointToRay(Input.mousePosition);
+        // Get layer mask that excludes "Player"
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int ignorePlayerMask = ~(1 << playerLayer); // Invert to ignore Player
+
+        // Get ray from camera center
+        Ray ray = spacecraftView.Camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 5000f))
+        if (Physics.Raycast(ray, out hit, 5000f, ignorePlayerMask))
         {
-            // You can visualize or store this hit point
-            Debug.DrawLine(ray.origin, hit.point, Color.red);
-
-            // Optional: store target for missile
             currentTargetPosition = hit.point;
-            // Optional: highlight target object
-            // if (hit.collider.CompareTag("Enemy")) { ... }
         }
     }
 
-    private void FireMissileAtMouseTarget()
+    private void FireMissileAtTarget()
     {
         if (missileCount > 0)
         {
@@ -185,17 +174,21 @@ public class SpacecraftController
 
     internal SpacecraftScriptable GetSpacecraftScriptable()
     {
-        throw new System.NotImplementedException();
+        return spacecraftSO;
     }
 
-    internal object GetCurrentRange()
+    public int GetCurrentRange()
     {
-        throw new System.NotImplementedException();
+        return (int)range;
     }
 
-    internal object GetCurrentAltitude()
+    public int GetCurrentAltitude()
     {
-        throw new System.NotImplementedException();
+        if (spacecraftView)
+        {
+            return (int)spacecraftView.transform.position.y;
+        }
+        return 0;
     }
 
     internal void Destroy()

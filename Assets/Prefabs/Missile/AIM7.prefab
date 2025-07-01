@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 841435937050009337}
   - component: {fileID: 3583064314968778447}
   - component: {fileID: -8711066323312118062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AIM7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +108,10 @@ PrefabInstance:
     - target: {fileID: 907368304835758179, guid: 07b4de35e1dbd2c4cb60bfb1befc0964, type: 3}
       propertyPath: m_Name
       value: AIM-7 Sparrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 907368304835758179, guid: 07b4de35e1dbd2c4cb60bfb1befc0964, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5801573744965324660, guid: 07b4de35e1dbd2c4cb60bfb1befc0964, type: 3}
       propertyPath: m_LocalPosition.x

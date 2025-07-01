@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 841435937050009337}
   - component: {fileID: 3583064314968778447}
   - component: {fileID: -8711066323312118062}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TY90
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 1476616640197636447, guid: 06b019471489b8c4a8072713692c3d7f, type: 3}
       propertyPath: m_Name
       value: TY-90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1476616640197636447, guid: 06b019471489b8c4a8072713692c3d7f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5343052341605948405, guid: 06b019471489b8c4a8072713692c3d7f, type: 3}
       propertyPath: m_Materials.Array.data[0]

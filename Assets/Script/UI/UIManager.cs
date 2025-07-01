@@ -15,6 +15,7 @@ public class UIManager : GenericMonoSingleton<UIManager>
     [Header("Room Panels")]
     public GameObject HomePanel;
     public GameObject DroneControlPanel;
+    public GameObject SpaceCraftSelectionPanel;
 
     public void ShowPanel(PanelType panelType)
     {

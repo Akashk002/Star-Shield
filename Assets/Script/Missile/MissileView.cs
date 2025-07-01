@@ -35,7 +35,7 @@ public class MissileView : MonoBehaviour
             building.TakeDamage(missileController.missileScriptable.damage);
         }
 
-        GameService.Instance.missileService.ReturnDefenderPool(missileController);
-        gameObject.SetActive(false);
+        //GameService.Instance.missileService.ReturnDefenderPool(missileController);
+        //gameObject.SetActive(false);
     }
 }

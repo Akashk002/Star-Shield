@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 841435937050009337}
   - component: {fileID: 3583064314968778447}
   - component: {fileID: -8711066323312118062}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AGM114
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +108,10 @@ PrefabInstance:
     - target: {fileID: 168003626313654784, guid: 76b8b363d373be542a37045f536815ca, type: 3}
       propertyPath: m_Name
       value: AGM-114 Hellfire
+      objectReference: {fileID: 0}
+    - target: {fileID: 168003626313654784, guid: 76b8b363d373be542a37045f536815ca, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4824924583409861930, guid: 76b8b363d373be542a37045f536815ca, type: 3}
       propertyPath: m_LocalPosition.x

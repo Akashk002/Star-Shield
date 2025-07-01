@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Frigate_1
   m_EditorClassIdentifier: 
   spacecraftType: 5
-  spacecraftView: {fileID: -4406730676619056594, guid: 8cf22dd9b6631cc4484a9470d32f6673, type: 3}
+  spacecraftView: {fileID: -4406730676619056594, guid: 56a290d91c71bfa46bc86eea14517917, type: 3}
   health: 100
   missileType: 1
   missileCapacity: 15
@@ -23,7 +23,7 @@ MonoBehaviour:
   brakeSpeed: 1
   accelerationSpeed: 1
   rotationSpeed: 100
-  mouseSensitivity: 1
+  mouseSensitivity: 0.75
   maxPitch: 80
   spacecraftSprite: {fileID: 785522155, guid: 179d4016fa8952c4da44a644fb574913, type: 3}
   spacecraftStatus: 0

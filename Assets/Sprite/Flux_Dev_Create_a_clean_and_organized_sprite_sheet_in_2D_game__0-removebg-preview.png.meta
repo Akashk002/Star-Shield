@@ -1,0 +1,743 @@
+fileFormatVersion: 2
+guid: 83cc6e30528d094419ea84843cb4fabf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 285
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bd5bcc79fb8814a8b783bb6769c1be
+      internalID: 1552191527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 289
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2f02b6adac2ba4898af3cd5756c410
+      internalID: 1564166111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 240
+        width: 88
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f96f6d8875606d4eb48a5effc9e61d7
+      internalID: -321851905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 235
+        width: 95
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417dc2140dfda514b94364d3dc0a6fe7
+      internalID: -1810957154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 281
+        width: 86
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fcdc3e42b015d946ab6cd180eab2141
+      internalID: -1827967807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 237
+        width: 76
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d77df76d936884390bc559661e1443
+      internalID: -295261225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 236
+        width: 15
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e986b57865b22a94eafd2a9a69528892
+      internalID: -1645018576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 232
+        width: 40
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf7120628798294f8dcb8027a42111d
+      internalID: 1746004340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 234
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06de45701d15dd843932965c120ac475
+      internalID: 1066172087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 254
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a94360bee31b248bfb0a2aecbde0e8
+      internalID: 1801833320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 228
+        width: 14
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd8adbe9e324fe448d0175883688bc1
+      internalID: -527392601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 230
+        width: 17
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb492a6aa1c19c044a304a5c9dce6a6c
+      internalID: -1531417820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 163
+        width: 89
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315d8fc1f4ab5e64a8efc7cadcc7d569
+      internalID: 579301351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 189
+        width: 43
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 852ab0965581297479e41bac49ebf7b0
+      internalID: -1235621806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 163
+        width: 95
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 165ca0662e53e5f43bf0122b3fd35798
+      internalID: 803166275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 137
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60a42cb465c42d47af532e6947bae34
+      internalID: 905029916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 165
+        width: 97
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 102670526cf5dbc479fd85a0344335fa
+      internalID: -42283589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 170
+        width: 99
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f82b959ff013c4c9c5fe6220a36644
+      internalID: 493625181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 44
+        width: 93
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cf7e87428ed222499c1ebc85ec5bacc
+      internalID: 1227760969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 54
+        width: 80
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6adce0912997a19488191e1bb4fb7aea
+      internalID: 627563071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 128
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aac220bd1a1b624b975a5c96fb66240
+      internalID: -1154845716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 47
+        width: 90
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e11d09c31daa3f047905f6c67563130d
+      internalID: 1710436635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 50
+        width: 62
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6877f18ad9058b4ca485da1c87932dd
+      internalID: -1065039661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_23
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 120
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a604e7dc1fc1d5a4990f05a8149aa3a0
+      internalID: -1651273513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_24
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 50
+        width: 86
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd7db3676871a3349973ee4069da49b0
+      internalID: -530250572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_25
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 76
+        width: 49
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b01915b3191feb4cbb2a30a59e99799
+      internalID: -431766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_26
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 74
+        width: 8
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9cda2cbd1a7e148b80b93ab7cbc511
+      internalID: -1177499124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_27
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 52
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b49055f630378d478521d910b22921e
+      internalID: -195840705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_0: 1552191527
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_1: 1564166111
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_10: -527392601
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_11: -1531417820
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_12: 579301351
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_13: -1235621806
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_14: 803166275
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_15: 905029916
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_16: -42283589
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_17: 493625181
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_18: 1227760969
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_19: 627563071
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_2: -321851905
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_20: -1154845716
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_21: 1710436635
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_22: -1065039661
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_23: -1651273513
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_24: -530250572
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_25: -431766
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_26: -1177499124
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_27: -195840705
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_3: -1810957154
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_4: -1827967807
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_5: -295261225
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_6: -1645018576
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_7: 1746004340
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_8: 1066172087
+      Flux_Dev_Create_a_clean_and_organized_sprite_sheet_in_2D_game__0-removebg-preview_9: 1801833320
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

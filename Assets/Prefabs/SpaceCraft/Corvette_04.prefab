@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2495982797975544944}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8947332209423657468}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 1785474406537293101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.64, z: 0.74}
+  m_LocalPosition: {x: 0, y: 8.14, z: 5.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1447524569827214567}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8732869323162349365}
   - component: {fileID: 207198171360531985}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,8 +118,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6720907335811659011}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14521241, y: 0.0000061686114, z: -0.00000090535514, w: 0.9894005}
-  m_LocalPosition: {x: -0.00012207031, y: 14.513472, z: -18.838318}
+  m_LocalRotation: {x: 0.14521314, y: 0.0000015419404, z: -0.00000022630874, w: 0.9894004}
+  m_LocalPosition: {x: 0, y: 16.013468, z: -14.098206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 8265694943561735480}
   - component: {fileID: 5491968616513212894}
   - component: {fileID: -4406730676619056594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Corvette_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7005939440928788443}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 1558960041064091890}
   - component: {fileID: 8067454558505893360}
   - component: {fileID: 2627666511252398147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,6 +480,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bb8b2d91f6a3ef448b6f43ac63d6df03, type: 3}
       propertyPath: m_Name
       value: Corvette_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bb8b2d91f6a3ef448b6f43ac63d6df03, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

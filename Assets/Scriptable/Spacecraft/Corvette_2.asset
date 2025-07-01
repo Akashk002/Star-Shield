@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Corvette_2
   m_EditorClassIdentifier: 
   spacecraftType: 1
-  spacecraftView: {fileID: -4406730676619056594, guid: 8cf22dd9b6631cc4484a9470d32f6673, type: 3}
+  spacecraftView: {fileID: -4406730676619056594, guid: e90e4d6cf59c4cd4c9b3f6c461bba160, type: 3}
   health: 100
   missileType: 3
   missileCapacity: 15
@@ -23,7 +23,7 @@ MonoBehaviour:
   brakeSpeed: 1
   accelerationSpeed: 1
   rotationSpeed: 100
-  mouseSensitivity: 1
+  mouseSensitivity: 0.75
   maxPitch: 80
   spacecraftSprite: {fileID: -1329518585, guid: f182c9c11ec28df42a81a99e5661bfd1, type: 3}
   spacecraftStatus: 2

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 841435937050009337}
   - component: {fileID: 3583064314968778447}
   - component: {fileID: -8711066323312118062}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HJ10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 4353591769629807778, guid: a39ea313a038ee34594470e41a4f818d, type: 3}
       propertyPath: m_Name
       value: HJ-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353591769629807778, guid: a39ea313a038ee34594470e41a4f818d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4696379260138099779, guid: a39ea313a038ee34594470e41a4f818d, type: 3}
       propertyPath: m_Materials.Array.data[0]

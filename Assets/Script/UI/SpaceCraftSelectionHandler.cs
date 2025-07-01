@@ -124,7 +124,8 @@ public class SpaceCraftSelectionHandler : MonoBehaviour
             return true;
         }
 
-        return false;
+        return true;
+        // return false;
     }
 
     private void Select()
@@ -150,7 +151,7 @@ public class SpaceCraftSelectionHandler : MonoBehaviour
 
     public void FlySpaceCraft()
     {
-        GameService.Instance.spacecraftService.CreateSpacecraft(GameService.Instance.GetSpacecraftDatas()[0].spacecraftScriptable);
+        GameService.Instance.spacecraftService.CreateSpacecraft(spacecraftScriptable);
         gameObject.SetActive(false);
     }
 

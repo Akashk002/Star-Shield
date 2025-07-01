@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 841435937050009337}
   - component: {fileID: 3583064314968778447}
   - component: {fileID: -8711066323312118062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'GBU12 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 7612640398529033262, guid: ddb5ca4ab0f8fb84fa0201d59da4e038, type: 3}
       propertyPath: m_Name
       value: GBU-12 Paveway II
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612640398529033262, guid: ddb5ca4ab0f8fb84fa0201d59da4e038, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

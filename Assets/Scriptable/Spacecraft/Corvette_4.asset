@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Corvette_4
   m_EditorClassIdentifier: 
   spacecraftType: 3
-  spacecraftView: {fileID: -4406730676619056594, guid: 8cf22dd9b6631cc4484a9470d32f6673, type: 3}
+  spacecraftView: {fileID: -4406730676619056594, guid: a2ba2d7904fea0f43afd2eae4e64843c, type: 3}
   health: 100
   missileType: 12
   missileCapacity: 15
@@ -23,9 +23,9 @@ MonoBehaviour:
   brakeSpeed: 1
   accelerationSpeed: 1
   rotationSpeed: 100
-  mouseSensitivity: 1
+  mouseSensitivity: 0.75
   maxPitch: 80
   spacecraftSprite: {fileID: -1693431911, guid: 4dd9cdd2db81fa344a9fa53a3ed8c4d6, type: 3}
-  spacecraftStatus: 0
+  spacecraftStatus: 2
   Xylora_Rocks: 2
   Prime_Rocks: 2

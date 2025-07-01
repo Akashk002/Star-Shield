@@ -6,7 +6,6 @@ public class SpacecraftService
 {
     private SpacecraftController spacecraftController;
 
-
     public void CreateSpacecraft(SpacecraftScriptable spacecraftScriptable)
     {
         RemovePreviousSpacecraft();

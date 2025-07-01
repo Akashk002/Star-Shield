@@ -97,11 +97,11 @@ public class MissileController : MonoBehaviour
         missileView.transform.position += dir * missileScriptable.moveSpeed * Time.deltaTime;
         missileView.transform.rotation = Quaternion.LookRotation(dir);
 
-        if (!isTargetReached && Vector3.Distance(missileView.transform.position, targetPosition) < 0.1f)
-        {
-            isTargetReached = true;
-            isTracking = false;
-        }
+        //if (!isTargetReached && Vector3.Distance(missileView.transform.position, targetPosition) < 0.1f)
+        //{
+        //    isTargetReached = true;
+        //    isTracking = false;
+        //}
     }
 
     public int GetdamageValue()

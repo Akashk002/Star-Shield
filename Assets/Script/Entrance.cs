@@ -10,7 +10,7 @@ public class Entrance : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && playerEntered && roomPanel.activeSelf)
         {
             ExitRoom();
         }
@@ -28,7 +28,7 @@ public class Entrance : MonoBehaviour, IInteractable
     public void Interact()
     {
         UIManager.Instance.GetInfoHandler().HideTextPopup();
-        if (roomPanel)
+        if (roomPanel && !playerEntered && !roomPanel.activeSelf)
         {
             EnterRoom();
         }
@@ -62,16 +62,13 @@ public class Entrance : MonoBehaviour, IInteractable
 
     public void ExitRoom()
     {
-        if (playerEntered)
-        {
-            roomPanel.SetActive(false);
-            GameService.Instance.playerService.GetPlayerController().Activate();
-            playerEntered = false;
+        roomPanel.SetActive(false);
+        GameService.Instance.playerService.GetPlayerController().Activate();
+        playerEntered = false;
 
-            if (entranceType == EntranceType.DroneControlRoomEntrance)
-            {
-                GameService.Instance.droneService.StopDrone();
-            }
+        if (entranceType == EntranceType.DroneControlRoomEntrance)
+        {
+            GameService.Instance.droneService.StopDrone();
         }
     }
 }

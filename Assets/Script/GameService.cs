@@ -26,6 +26,7 @@ public class GameService : GenericMonoSingleton<GameService>
         spacecraftService = new SpacecraftService();
         enemySpaceCraftService = new EnemySpaceCraftService(enemySpaceCraftScriptables);
         missileService = new MissileService(missileDatas);
+
     }
 
     private void Update()
