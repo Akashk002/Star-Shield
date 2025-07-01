@@ -5,22 +5,30 @@ using UnityEngine;
 
 public class EnemySpaceCraftPool : GenericObjectPool<EnemySpaceCraftController>
 {
-    private EnemySpaceCraftView enemySpaceCraftView;
     private EnemySpaceCraftScriptable enemySpaceCraftScriptable;
 
-
-    public EnemySpaceCraftController GetEnemySpaceCraft<T>(EnemySpaceCraftView enemySpaceCraftView, EnemySpaceCraftScriptable enemySpaceCraftScriptable) where T : EnemySpaceCraftController
+    public void Initialize(EnemySpaceCraftScriptable enemySpaceCraftScriptable)
     {
-        this.enemySpaceCraftView = enemySpaceCraftView;
         this.enemySpaceCraftScriptable = enemySpaceCraftScriptable;
+        EnemySpaceCraftController enemySpaceCraftController = PreloadItems<EnemySpaceCraftController>();
+
+        enemySpaceCraftController.Deactivate();
+    }
+
+    public EnemySpaceCraftController GetEnemySpaceCraft<T>(EnemySpaceCraftScriptable enemySpaceCraftScriptable) where T : EnemySpaceCraftController
+    {
+        this.enemySpaceCraftScriptable = enemySpaceCraftScriptable;
+
         return GetItem<T>();
     }
 
     protected override EnemySpaceCraftController CreateItem<T>()
     {
         if (typeof(T) == typeof(EnemySpaceCraftController))
-            return new EnemySpaceCraftController(enemySpaceCraftView, enemySpaceCraftScriptable);
+            return new EnemySpaceCraftController(enemySpaceCraftScriptable);
         else
             throw new NotSupportedException($"This type '{typeof(T)}' is not supported.");
     }
 }
+
+

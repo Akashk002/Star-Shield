@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpaceCraftView : MonoBehaviour
 {
+    [SerializeField] private List<Transform> shootPoints;
     private EnemySpaceCraftController enemySpaceCraftController;
-    private GameObject bulletPrefab;
-    private Transform shootPoint;
     private float shootInterval = 3f;
     private Coroutine shootCoroutine;
 
@@ -31,7 +29,9 @@ public class EnemySpaceCraftView : MonoBehaviour
     {
         while (true)
         {
-            enemySpaceCraftController.Shoot();
+            Transform initialTrans = shootPoints[Random.Range(0, shootPoints.Count)];
+            Vector3 targetPos = GameService.Instance.playerService.GetPlayerController().GetPos();// Replace with actual target position logic, e.g., player position
+            enemySpaceCraftController.Shoot(initialTrans, targetPos);
             yield return new WaitForSeconds(shootInterval);
         }
     }
@@ -41,5 +41,10 @@ public class EnemySpaceCraftView : MonoBehaviour
     {
         if (shootCoroutine != null)
             StopCoroutine(shootCoroutine);
+    }
+
+    internal void TakeDamage(float damage)
+    {
+
     }
 }

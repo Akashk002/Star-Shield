@@ -1,5 +1,4 @@
 using Cinemachine;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +8,14 @@ public class SpacecraftView : MonoBehaviour
     public Rigidbody rb;
     public CinemachineVirtualCamera cam;
     private SpacecraftController controller;
+    [SerializeField] private List<Transform> shootPoints;
+
+    public Camera Camera;
+
+    private void Start()
+    {
+        Camera = Camera.main;
+    }
 
     internal void SetController(SpacecraftController spacecraftController)
     {
@@ -21,5 +28,11 @@ public class SpacecraftView : MonoBehaviour
         {
             controller.Update();
         }
+    }
+
+    public Transform GetShootTransform()
+    {
+        int randomIndex = Random.Range(0, shootPoints.Count);
+        return shootPoints[randomIndex];
     }
 }

@@ -30,7 +30,7 @@ MonoBehaviour:
   - RockType: 5
     rockCount: 0
   maxTiredness: 50
-  tiredness: 34.22821
+  tiredness: 7.2154984
   tirednessIncRate: 0.0001
-  bagCapacity: 20
+  RockStorageCapacity: 20
   tirednessRecoverTime: 15

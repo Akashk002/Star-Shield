@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class SpacecraftService
 {
-    private List<SpacecraftData> spacecraftDatas = new List<SpacecraftData>();
     private SpacecraftController spacecraftController;
 
-    public SpacecraftService(List<SpacecraftData> spacecraftDatas)
+
+    public void CreateSpacecraft(SpacecraftScriptable spacecraftScriptable)
     {
-        this.spacecraftDatas = spacecraftDatas;
+        RemovePreviousSpacecraft();
+        spacecraftController = new SpacecraftController(spacecraftScriptable);
+        spacecraftController.Configure();
     }
 
-    public void CreateSpacecraft(SpacecraftType spacecraftType)
+    public void RemovePreviousSpacecraft()
     {
-        SpacecraftData spacecraftData = spacecraftDatas.Find(data => data.spacecraftType == spacecraftType);
-        spacecraftController = new SpacecraftController(spacecraftData.spacecraftScriptable);
-        spacecraftController.Configure();
+        if (spacecraftController != null)
+        {
+            spacecraftController.Destroy();
+            spacecraftController = null;
+        }
     }
 
     public SpacecraftController GetSpacecraftController()

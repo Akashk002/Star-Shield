@@ -12,16 +12,16 @@ public class EnemySpaceCraftController
     private bool isTargetReached = false;
     private bool isMoving = false;
 
-    public EnemySpaceCraftController(EnemySpaceCraftView enemySpaceCraftprefab, EnemySpaceCraftScriptable enemySpaceCraftScriptable)
+    public EnemySpaceCraftController(EnemySpaceCraftScriptable enemySpaceCraftScriptable)
     {
-        enemySpaceCraftView = Object.Instantiate(enemySpaceCraftprefab);
+        enemySpaceCraftView = Object.Instantiate(enemySpaceCraftScriptable.enemySpaceCraftView);
         enemySpaceCraftView.SetController(this);
         this.enemySpaceCraftScriptable = enemySpaceCraftScriptable;
-
     }
 
     public void Configure(Vector3 initialPos, Vector3 tragetPos)
     {
+        Activate();
         enemySpaceCraftView.transform.position = initialPos;
         targetPosition = tragetPos;
 
@@ -55,8 +55,24 @@ public class EnemySpaceCraftController
         }
     }
 
-    public void Shoot()
+    public void Shoot(Transform initialTrans, Vector3 targetPos)
     {
-        Debug.Log("Missile launch!");
+        bool EnableTurning = isTargetReached;
+        GameService.Instance.missileService.CreateMissile(enemySpaceCraftScriptable.missileType, initialTrans, targetPos, EnableTurning);
+    }
+
+    internal void TakeDamage(float damage)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Activate()
+    {
+        enemySpaceCraftView.gameObject.SetActive(true);
+    }
+
+    public void Deactivate()
+    {
+        enemySpaceCraftView.gameObject.SetActive(false);
     }
 }

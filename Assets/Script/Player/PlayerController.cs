@@ -96,6 +96,7 @@ public class PlayerController
         state = State.Activate;
         playerView.gameObject.SetActive(true);
         playerView.cam.Priority = 1;
+        UIManager.Instance.minimapIconPanel.SetTarget(playerView.transform);
 
         if (tireNessleenTween != null)
         {
@@ -165,5 +166,10 @@ public class PlayerController
             playerScriptable.tiredness = val;
             UIManager.Instance.playerPanel.SetTiredness(playerScriptable.tiredness, playerScriptable.maxTiredness);
         }).setOnComplete(() => tireNessleenTween = null);
+    }
+
+    public Vector3 GetPos()
+    {
+        return playerView.transform.position;
     }
 }

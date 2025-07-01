@@ -36,4 +36,9 @@ public class RockData
             rockCount -= val;
         }
     }
+
+    public bool CanSpend(int val)
+    {
+        return val >= rockCount;
+    }
 }

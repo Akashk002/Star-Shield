@@ -10,7 +10,7 @@ public class Entrance : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             ExitRoom();
         }
@@ -80,4 +80,5 @@ public enum EntranceType
 {
     HomeEntrance,
     DroneControlRoomEntrance,
+    RunwayStripEntrance,
 }

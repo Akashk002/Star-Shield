@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,11 @@ public class Building : MonoBehaviour, IInteractable
             "(\\B[A-Z])",
             " $1"
         );
+    }
+
+    internal void TakeDamage(float damage)
+    {
+        Debug.Log($"[Building] {gameObject.name} took {damage} damage.");
     }
 }
 
