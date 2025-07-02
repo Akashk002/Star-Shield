@@ -27,7 +27,7 @@ public class SpaceCraftUIManager : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         UpdateSpacecraftDisplayData();
     }
