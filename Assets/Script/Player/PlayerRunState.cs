@@ -6,7 +6,7 @@ public class PlayerRunState : IStatePlayer
 {
     public PlayerController Owner { get; set; }
     private IStateMachinePlayer stateMachine;
-
+    private AudioSource audioSource;
     public PlayerRunState(IStateMachinePlayer stateMachine) => this.stateMachine = stateMachine;
 
     public void OnStateEnter()
@@ -22,6 +22,10 @@ public class PlayerRunState : IStatePlayer
             {
                 stateMachine.ChangeState(PlayerStates.Walk);
             }
+            //if (audioSource == null || !audioSource.isPlaying)
+            //    audioSource = AudioManager.Instance.PlayLoopingAt(GameAudioType.PlayerRun, Owner.GetPos());
+            //else
+            //    audioSource.transform.position = Owner.GetPos();
         }
         else
         {

@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController
@@ -9,7 +10,7 @@ public class PlayerController
     private PlayerScriptable playerScriptable;
     private float turnSmoothVelocity;
     private Vector3 gravityVelocity;
-    private PlayerView playerView;
+    public PlayerView playerView;
     private PlayerStateMachine stateMachine;
     private State state;
     private int rockCount;
@@ -26,7 +27,6 @@ public class PlayerController
         CreateStateMachine();
         stateMachine.ChangeState(PlayerStates.Idle);
         playerScriptable.tiredness = 0f;
-
         Activate();
     }
     public void Interact() => IsInteracted = Input.GetKeyDown(KeyCode.E) ? true : (Input.GetKeyUp(KeyCode.E) ? false : IsInteracted);
@@ -48,6 +48,7 @@ public class PlayerController
         float v = Input.GetAxis("Vertical");
         bool isRunning = Input.GetKey(KeyCode.Space);
         moveSpeed = (v != 0) ? (!isRunning) ? playerScriptable.walkSpeed : playerScriptable.runSpeed : 0;
+
         PlayerMove(v);
     }
 
@@ -69,7 +70,6 @@ public class PlayerController
             // Calculate movement direction based on camera rotation
             float moveAngle = Mathf.Atan2(inputDir.x, inputDir.z) * Mathf.Rad2Deg + cameraXAxisValue;
             Vector3 moveDir = Quaternion.Euler(0f, moveAngle, 0f) * Vector3.forward;
-
             playerView.controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime * ((100 - playerScriptable.tiredness) / 100));
 
             SetTiredness(moveSpeed);
@@ -116,6 +116,7 @@ public class PlayerController
     {
         if (GetTotalRock() < playerScriptable.RockStorageCapacity)
         {
+            AudioManager.Instance.PlayOneShotAt(GameAudioType.CollectRock, playerView.transform.position);
             RockData rockData = playerScriptable.rockDatas.Find(r => r.RockType == rockType);
             rockData.AddRock();
             UIManager.Instance.playerPanel.SetRockCount(rockType, rockData.rockCount);

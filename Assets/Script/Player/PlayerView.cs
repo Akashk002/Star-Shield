@@ -10,6 +10,7 @@ public class PlayerView : MonoBehaviour, ITriggerObject
     public CharacterController controller;
     public Animator animator;
     public GameObject bagPack;
+    public AudioSource audioSource;
     private PlayerController playerController;
 
     public void SetController(PlayerController playerController)

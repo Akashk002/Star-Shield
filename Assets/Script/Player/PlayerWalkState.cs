@@ -6,7 +6,7 @@ public class PlayerWalkState : IStatePlayer
 {
     public PlayerController Owner { get; set; }
     private IStateMachinePlayer stateMachine;
-
+    private AudioSource walkAudioSource;
     public PlayerWalkState(IStateMachinePlayer stateMachine) => this.stateMachine = stateMachine;
 
     public void OnStateEnter()
@@ -22,6 +22,11 @@ public class PlayerWalkState : IStatePlayer
             {
                 stateMachine.ChangeState(PlayerStates.Run);
             }
+
+            if (walkAudioSource == null || !walkAudioSource.isPlaying)
+                walkAudioSource = AudioManager.Instance.PlayLoopingAt(GameAudioType.PlayerWalk, Owner.GetPos());
+            else
+                walkAudioSource.transform.position = Owner.GetPos();
         }
         else
         {
@@ -29,8 +34,10 @@ public class PlayerWalkState : IStatePlayer
         }
     }
 
+
     public void OnStateExit()
     {
+        AudioManager.Instance.StopSound(walkAudioSource);
         Owner.GetPlayerAnimator().SetBool("isWalking", false);
     }
 }

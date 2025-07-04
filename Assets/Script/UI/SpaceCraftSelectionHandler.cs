@@ -146,12 +146,14 @@ public class SpaceCraftSelectionHandler : MonoBehaviour
         if (spacecraftScriptable.spacecraftStatus == SpacecraftStatus.Unlocked || spacecraftScriptable.spacecraftStatus == SpacecraftStatus.Locked && CanPuchase())
         {
             Select();
+
         }
     }
 
     public void FlySpaceCraft()
     {
         GameService.Instance.spacecraftService.CreateSpacecraft(spacecraftScriptable);
+        GameService.Instance.spacecraftService.GetSpacecraftController().Activate();
         gameObject.SetActive(false);
     }
 

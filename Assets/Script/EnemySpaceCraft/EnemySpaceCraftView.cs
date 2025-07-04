@@ -30,7 +30,7 @@ public class EnemySpaceCraftView : MonoBehaviour
         while (true)
         {
             Transform initialTrans = shootPoints[Random.Range(0, shootPoints.Count)];
-            Vector3 targetPos = GameService.Instance.playerService.GetPlayerController().GetPos();// Replace with actual target position logic, e.g., player position
+            Vector3 targetPos = GameService.Instance.buildingManager.GetRandomBuildingPos();
             enemySpaceCraftController.Shoot(initialTrans, targetPos);
             yield return new WaitForSeconds(shootInterval);
         }

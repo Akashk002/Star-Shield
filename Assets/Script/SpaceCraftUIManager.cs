@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SpaceCraftUIManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SpaceCraftUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rangeRemainingTxt;
     [SerializeField] private TextMeshProUGUI altitudeTxt;
     [SerializeField] private TextMeshProUGUI missileCountTxt;
+    [SerializeField] private Button backToRoomBtn;
     private int maxMissile;
     private int maxRange;
 
@@ -19,6 +21,7 @@ public class SpaceCraftUIManager : MonoBehaviour
 
     private void Start()
     {
+        backToRoomBtn.onClick.AddListener(BackToRoom);
         spacecraftController = GameService.Instance.spacecraftService.GetSpacecraftController();
         spacecraftScriptable = spacecraftController.GetSpacecraftScriptable();
         maxSpeedTxt.SetText(spacecraftScriptable.maxSpeed.ToString());
@@ -26,18 +29,24 @@ public class SpaceCraftUIManager : MonoBehaviour
         maxRange = spacecraftScriptable.maxRange;
     }
 
-
-    private void Update()
+    public void SetMissileCount(int value)
     {
-        UpdateSpacecraftDisplayData();
+        missileCountTxt.SetText($"{value}/{maxMissile}");
     }
 
-    public void UpdateSpacecraftDisplayData()
+    public void SetAltitude(int height)
     {
-        speedTxt.SetText(spacecraftController.GetCurrentSpeed().ToString());
-        rangeRemainingTxt.SetText($"{spacecraftController.GetCurrentRange()}/{maxRange}");
-        altitudeTxt.SetText(spacecraftController.GetCurrentAltitude().ToString());
-        missileCountTxt.SetText($"{spacecraftController.GetMissileCount()}/{maxMissile}");
+        altitudeTxt.SetText(height.ToString());
+    }
+
+    public void SetRangeRemaining(int range)
+    {
+        rangeRemainingTxt.SetText($"{range}/{maxRange}");
+    }
+
+    public void SetSpeed(int speed)
+    {
+        speedTxt.SetText(speed.ToString());
     }
 
     public void BackToRoom()
@@ -45,5 +54,10 @@ public class SpaceCraftUIManager : MonoBehaviour
         GameService.Instance.spacecraftService.GetSpacecraftController().Deactivate();
         UIManager.Instance.SpaceCraftSelectionPanel.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    public void ToggleBackToRoomBtn(bool enable)
+    {
+        backToRoomBtn.gameObject.SetActive(enable);
     }
 }

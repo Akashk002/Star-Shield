@@ -7,7 +7,6 @@ public class DroneView : MonoBehaviour, ITriggerObject
     public Rigidbody rb;
     public Camera cam;
     private DroneController controller;
-
     public void TriggerEnter(GameObject gameObject)
     {
         if (gameObject.GetComponent<Rock>())

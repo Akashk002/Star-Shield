@@ -33,6 +33,7 @@ public class MinimapIconFollow : MonoBehaviour
         minimapIcon.localEulerAngles = new Vector3(0, 0, -targetToFollow.eulerAngles.y);
     }
 
+
     public void SetTarget(Transform target)
     {
         targetToFollow = target;

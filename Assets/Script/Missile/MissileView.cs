@@ -6,6 +6,7 @@ using UnityEngine;
 public class MissileView : MonoBehaviour
 {
     private MissileController missileController;
+    public VFXType ExplosionVFXType;
 
     // Update is called once per frame
     void Update()
@@ -35,7 +36,9 @@ public class MissileView : MonoBehaviour
             building.TakeDamage(missileController.missileScriptable.damage);
         }
 
-        //GameService.Instance.missileService.ReturnDefenderPool(missileController);
-        //gameObject.SetActive(false);
+        GameService.Instance.missileService.ReturnDefenderPool(missileController);
+
+        GameService.Instance.VFXService.PlayVFXAtPosition(ExplosionVFXType, transform.position);
+        gameObject.SetActive(false);
     }
 }

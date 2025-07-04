@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DroneController
@@ -13,7 +14,7 @@ public class DroneController
 
     private LTDescr batteryLeenTween;
     public bool IsInteracted;
-
+    private AudioSource audioSource;
     public DroneController(DroneScriptable droneScriptable)
     {
         this.droneScriptable = droneScriptable;
@@ -31,6 +32,8 @@ public class DroneController
         pitch = euler.x;
 
         droneState = DroneState.Deactivate;
+
+        //audioSource = droneView.AddComponent<AudioSource>();
     }
 
     public void Update()
@@ -73,6 +76,26 @@ public class DroneController
         if (down) moveDir -= droneView.transform.up * droneScriptable.verticalSpeed;
 
         droneView.rb.velocity = moveDir;
+
+        if (moveDir != Vector3.zero)
+        {
+            if (audioSource == null || !audioSource.isPlaying)
+            {
+                audioSource = AudioManager.Instance.PlayLoopingAt(GameAudioType.DroneMoving, droneView.transform.position, 1);
+                audioSource.transform.position = droneView.transform.position;
+            }
+            else
+                audioSource.transform.position = droneView.transform.position;
+        }
+        else
+        {
+            if (audioSource != null && audioSource.isPlaying)
+            {
+                AudioManager.Instance.StopSound(audioSource);
+                audioSource = null;
+            }
+        }
+
 
         if (isRotating || Input.GetMouseButton(0))
             ApplyRotation();
@@ -161,6 +184,7 @@ public class DroneController
     {
         if (GetTotalRock() < droneScriptable.RockStorageCapacity)
         {
+            AudioManager.Instance.PlayOneShotAt(GameAudioType.CollectRock, droneView.transform.position);
             RockData rockData = droneScriptable.rockDatas.Find(r => r.RockType == rockType);
             rockData?.AddRock();
             UIManager.Instance.droneUIManager.SetRockCount(rockType, rockData.rockCount);

@@ -10,12 +10,15 @@ public class GameService : GenericMonoSingleton<GameService>
     [SerializeField] private List<SpacecraftData> spacecraftDatas = new List<SpacecraftData>();
     [SerializeField] private List<EnemySpaceCraftScriptable> enemySpaceCraftScriptables = new List<EnemySpaceCraftScriptable>();
     [SerializeField] private List<MissileData> missileDatas = new List<MissileData>();
-
+    [SerializeField] private VFXView VFXPrefab;
+    public BuildingManager buildingManager;
     public PlayerService playerService { get; private set; }
     public DroneService droneService { get; private set; }
     public SpacecraftService spacecraftService { get; private set; }
     public EnemySpaceCraftService enemySpaceCraftService { get; private set; }
     public MissileService missileService { get; private set; }
+
+    public VFXService VFXService { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +29,7 @@ public class GameService : GenericMonoSingleton<GameService>
         spacecraftService = new SpacecraftService();
         enemySpaceCraftService = new EnemySpaceCraftService(enemySpaceCraftScriptables);
         missileService = new MissileService(missileDatas);
-
+        VFXService = new VFXService(VFXPrefab);
     }
 
     private void Update()
