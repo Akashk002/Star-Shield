@@ -35,6 +35,7 @@ public class DroneUIManager : MonoBehaviour
 
     private void SwitchDrone()
     {
+        GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.ClickButton, transform.position);
         GameService.Instance.droneService.SwitchDrone();
         stoneInfoPanel.gameObject.SetActive(currentDroneScriptable.droneType == DroneType.CarrierDrone);
         ToggleSurveillanceButton.gameObject.SetActive(currentDroneScriptable.droneType == DroneType.SecurityDrone);
@@ -43,6 +44,7 @@ public class DroneUIManager : MonoBehaviour
 
     public void ToggleSurveillanceMode()
     {
+        GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.ClickButton, transform.position);
         GameService.Instance.droneService.GetDroneController().ToggleDroneSurveillanceState();
         UpdateToggleSurveillanceButtonText();
     }

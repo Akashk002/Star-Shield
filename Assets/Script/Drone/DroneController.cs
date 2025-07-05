@@ -81,8 +81,7 @@ public class DroneController
         {
             if (audioSource == null || !audioSource.isPlaying)
             {
-                audioSource = AudioManager.Instance.PlayLoopingAt(GameAudioType.DroneMoving, droneView.transform.position, 1);
-                audioSource.transform.position = droneView.transform.position;
+                audioSource = GameService.Instance.audioManager.PlayLoopingAt(GameAudioType.DroneMoving, droneView.transform.position, 1);
             }
             else
                 audioSource.transform.position = droneView.transform.position;
@@ -91,7 +90,7 @@ public class DroneController
         {
             if (audioSource != null && audioSource.isPlaying)
             {
-                AudioManager.Instance.StopSound(audioSource);
+                GameService.Instance.audioManager.StopSound(audioSource);
                 audioSource = null;
             }
         }
@@ -184,7 +183,7 @@ public class DroneController
     {
         if (GetTotalRock() < droneScriptable.RockStorageCapacity)
         {
-            AudioManager.Instance.PlayOneShotAt(GameAudioType.CollectRock, droneView.transform.position);
+            GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.CollectRock, droneView.transform.position);
             RockData rockData = droneScriptable.rockDatas.Find(r => r.RockType == rockType);
             rockData?.AddRock();
             UIManager.Instance.droneUIManager.SetRockCount(rockType, rockData.rockCount);

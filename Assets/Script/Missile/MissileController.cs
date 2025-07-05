@@ -33,6 +33,8 @@ public class MissileController : MonoBehaviour
     // 🔧 Optionally allow disabling turn
     public void Configure(Transform initransform, Vector3 tragetPos, bool turnEnabled = true)
     {
+        //  GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.MissileLaunch, transform.position);
+
         missileView.gameObject.SetActive(true);
 
         missileView.transform.position = initransform.position;

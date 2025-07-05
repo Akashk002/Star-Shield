@@ -12,6 +12,7 @@ public class GameService : GenericMonoSingleton<GameService>
     [SerializeField] private List<MissileData> missileDatas = new List<MissileData>();
     [SerializeField] private VFXView VFXPrefab;
     public BuildingManager buildingManager;
+    public AudioManager audioManager;
     public PlayerService playerService { get; private set; }
     public DroneService droneService { get; private set; }
     public SpacecraftService spacecraftService { get; private set; }

@@ -50,6 +50,7 @@ public class SpaceCraftSelectionHandler : MonoBehaviour
 
     public void OnNextButtonClicked()
     {
+        GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.ClickButton, transform.position);
         SpaceCraftIndex++;
         if (SpaceCraftIndex >= spacecraftData.Count)
         {
@@ -61,6 +62,7 @@ public class SpaceCraftSelectionHandler : MonoBehaviour
 
     public void OnPreviousButtonClicked()
     {
+        GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.ClickButton, transform.position);
         SpaceCraftIndex--;
         if (SpaceCraftIndex < 0)
         {
@@ -146,12 +148,13 @@ public class SpaceCraftSelectionHandler : MonoBehaviour
         if (spacecraftScriptable.spacecraftStatus == SpacecraftStatus.Unlocked || spacecraftScriptable.spacecraftStatus == SpacecraftStatus.Locked && CanPuchase())
         {
             Select();
-
+            GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.Select, transform.position);
         }
     }
 
     public void FlySpaceCraft()
     {
+        GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.ClickButton, transform.position);
         GameService.Instance.spacecraftService.CreateSpacecraft(spacecraftScriptable);
         GameService.Instance.spacecraftService.GetSpacecraftController().Activate();
         gameObject.SetActive(false);

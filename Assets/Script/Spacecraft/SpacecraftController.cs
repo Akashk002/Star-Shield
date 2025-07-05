@@ -16,6 +16,8 @@ public class SpacecraftController
     private State state;
     private Vector3 currentTargetPosition;
     private SpaceCraftUIManager spaceCraftUIManager;
+    private AudioSource audioSource;
+
     public SpacecraftController(SpacecraftScriptable spacecraftSO)
     {
         this.spacecraftView = Object.Instantiate(spacecraftSO.spacecraftView);
@@ -103,6 +105,27 @@ public class SpacecraftController
 
         // --- Apply Velocity ---
         spacecraftView.rb.velocity = moveDirection;
+
+        if (moveDirection != Vector3.zero)
+        {
+            if (audioSource == null || !audioSource.isPlaying)
+            {
+                audioSource = GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.SpacecraftMoving, spacecraftView.transform.position);
+            }
+            else
+            {
+                audioSource.transform.position = spacecraftView.transform.position;
+            }
+        }
+        else
+        {
+            if (audioSource != null && audioSource.isPlaying)
+            {
+                GameService.Instance.audioManager.StopSound(audioSource);
+                audioSource = null;
+            }
+        }
+
 
         // --- Rotation by Mouse ---
         if (isRotating || Input.GetMouseButton(0))

@@ -21,6 +21,7 @@ public class InfoHandler : MonoBehaviour
     public void ShowInstruction(InstructionType type)
     {
         stopCoroutine(instructionCoroutine);
+        GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.ShowInstruction, transform.position);
         instructionCoroutine = StartCoroutine(setInstructions(type));
     }
 
@@ -92,18 +93,4 @@ public class InfoHandler : MonoBehaviour
         objectnameText.gameObject.SetActive(false);
         stopCoroutine(ObjectNameCoroutine);
     }
-}
-
-[System.Serializable]
-public class InstructionData
-{
-    public InstructionType instructionType;
-    public InstructionSciprtableObject instructionSciprtableObject;
-}
-public enum InstructionType
-{
-    RockCollect,
-    CarryBagpack,
-    EnterRoom,
-    BagFull
 }

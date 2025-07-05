@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b626892ff8ec3489fe52e87d226d95, type: 3}
+  m_Name: ReserchCenter
+  m_EditorClassIdentifier: 
+  buildingType: 2
+  description: The hub of scientific advancement. Engineers and scientists work here
+    to unlock new technologies, upgrade spacecraft systems, improve drones, and discover
+    alien elements. Progress here powers your future.
+  buildingIcon: {fileID: 672218008, guid: 855a888e6bcd8a441ba224908962dcf9, type: 3}
+  buildingState: 2
+  rockRequire: 2

@@ -37,8 +37,10 @@ public class MissileView : MonoBehaviour
         }
 
         GameService.Instance.missileService.ReturnDefenderPool(missileController);
-
         GameService.Instance.VFXService.PlayVFXAtPosition(ExplosionVFXType, transform.position);
+
+        GameAudioType gameAudioType = (ExplosionVFXType == VFXType.MissileExplosionGround) ? GameAudioType.MissileBlastBig : GameAudioType.MissileBlastSmall;
+        GameService.Instance.audioManager.PlayOneShotAt(gameAudioType, transform.position);
         gameObject.SetActive(false);
     }
 }

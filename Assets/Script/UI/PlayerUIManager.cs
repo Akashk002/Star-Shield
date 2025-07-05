@@ -33,6 +33,7 @@ public class PlayerUIManager : MonoBehaviour
 
     public void TakeRest()
     {
+        GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.ClickButton, transform.position);
         GameService.Instance.playerService.GetPlayerController().TakeRest();
     }
 
@@ -40,6 +41,7 @@ public class PlayerUIManager : MonoBehaviour
     {
         if (stoneInfoPanel != null)
         {
+            GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.ClickButton, transform.position);
             stoneInfoPanel.gameObject.SetActive(!stoneInfoPanel.gameObject.activeSelf);
             bagPackButton.targetGraphic.color = stoneInfoPanel.gameObject.activeSelf ? new Color(1, 1, 1, 0.5f) : Color.white;
             bagPackText.text = stoneInfoPanel.gameObject.activeSelf ? "Click to drop the bag" : "Click to get the bag";

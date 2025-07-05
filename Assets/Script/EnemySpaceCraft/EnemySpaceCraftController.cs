@@ -11,6 +11,7 @@ public class EnemySpaceCraftController
 
     private bool isTargetReached = false;
     private bool isMoving = false;
+    private AudioSource audioSource;
 
     public EnemySpaceCraftController(EnemySpaceCraftScriptable enemySpaceCraftScriptable)
     {
@@ -52,6 +53,26 @@ public class EnemySpaceCraftController
             isTargetReached = true;
             isMoving = false;
             enemySpaceCraftView.startShooting();
+        }
+
+        if (!isTargetReached)
+        {
+            if (audioSource == null || !audioSource.isPlaying)
+            {
+                audioSource = GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.EnemySpacecraftMoving, enemySpaceCraftView.transform.position);
+            }
+            else
+            {
+                audioSource.transform.position = enemySpaceCraftView.transform.position;
+            }
+        }
+        else
+        {
+            if (audioSource != null && audioSource.isPlaying)
+            {
+                GameService.Instance.audioManager.StopSound(audioSource);
+                audioSource = null;
+            }
         }
     }
 

@@ -56,7 +56,7 @@ public class MinimapIconFollow : MonoBehaviour
         {
             if (targetImage != null)
                 targetImage.enabled = !targetImage.enabled;
-
+            GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.Emergency, targetImage.transform.position);
             yield return new WaitForSeconds(blinkInterval);
             elapsedTime += blinkInterval;
         }

@@ -4,9 +4,6 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; }
-
-
     [Header("Settings")]
     public int poolSize = 10;
     public AudioSource prefab3DAudioSource;
@@ -16,21 +13,11 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // optional
-            CreatePool();
-        }
-
+        CreatePool();
     }
     private void Start()
     {
-
+        PlayLoopingAt(GameAudioType.EnvironmentBG, Vector3.zero, 0.5f);
     }
 
     private void CreatePool()
@@ -67,7 +54,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // 🔊 Play One-shot 3D sound
-    public void PlayOneShotAt(GameAudioType gameAudioType, Vector3 position, float volume = 1f)
+    public AudioSource PlayOneShotAt(GameAudioType gameAudioType, Vector3 position, float volume = 1f)
     {
         AudioClip clip = soundDataList.Find(data => data.gameAudioType == gameAudioType)?.audioClip;
 
@@ -80,6 +67,7 @@ public class AudioManager : MonoBehaviour
         source.Play();
 
         StartCoroutine(ReturnAfterFinish(source));
+        return source;
     }
 
     // 🔁 Looping 3D sound at a position
@@ -137,23 +125,22 @@ public enum SoundType
 
 public enum GameAudioType
 {
-    ClickButton,
-    CollectRock,
-    DroneMoving,
-    Emergency,
-    EnemySpacecraftMoving,
-    EnterRoom,
-    EnvironmentBG,
-    ExitRoom,
-    MissileBlastBig,
-    MissileBlastSmall,
-    MissileLaunch,
+    ClickButton,//
+    CollectRock,//
+    DroneMoving,//
+    Emergency,//
+    EnemySpacecraftMoving,//
+    EnterRoom,//
+    EnvironmentBG,//
+    ExitRoom,//
+    MissileBlastBig,//
+    MissileBlastSmall,//
+    MissileLaunch,//
     MissionComplete,
     MissionFailed,
-    PlayerRun,
-    PlayerWalk,
-    Select,
-    ShowInstruction,
-    SpacecraftMoving,
-    SpacecraftStart
+    PlayerRun,//
+    PlayerWalk,//
+    Select,//
+    ShowInstruction,//
+    SpacecraftMoving,//
 }

@@ -24,7 +24,7 @@ public class PlayerWalkState : IStatePlayer
             }
 
             if (walkAudioSource == null || !walkAudioSource.isPlaying)
-                walkAudioSource = AudioManager.Instance.PlayLoopingAt(GameAudioType.PlayerWalk, Owner.GetPos());
+                walkAudioSource = GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.PlayerWalk, Owner.GetPos());
             else
                 walkAudioSource.transform.position = Owner.GetPos();
         }
@@ -37,7 +37,7 @@ public class PlayerWalkState : IStatePlayer
 
     public void OnStateExit()
     {
-        AudioManager.Instance.StopSound(walkAudioSource);
+        GameService.Instance.audioManager.StopSound(walkAudioSource);
         Owner.GetPlayerAnimator().SetBool("isWalking", false);
     }
 }

@@ -116,7 +116,7 @@ public class PlayerController
     {
         if (GetTotalRock() < playerScriptable.RockStorageCapacity)
         {
-            AudioManager.Instance.PlayOneShotAt(GameAudioType.CollectRock, playerView.transform.position);
+            GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.CollectRock, playerView.transform.position);
             RockData rockData = playerScriptable.rockDatas.Find(r => r.RockType == rockType);
             rockData.AddRock();
             UIManager.Instance.playerPanel.SetRockCount(rockType, rockData.rockCount);

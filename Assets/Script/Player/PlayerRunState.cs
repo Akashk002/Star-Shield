@@ -22,10 +22,10 @@ public class PlayerRunState : IStatePlayer
             {
                 stateMachine.ChangeState(PlayerStates.Walk);
             }
-            //if (audioSource == null || !audioSource.isPlaying)
-            //    audioSource = AudioManager.Instance.PlayLoopingAt(GameAudioType.PlayerRun, Owner.GetPos());
-            //else
-            //    audioSource.transform.position = Owner.GetPos();
+            if (audioSource == null || !audioSource.isPlaying)
+                audioSource = GameService.Instance.audioManager.PlayOneShotAt(GameAudioType.PlayerRun, Owner.GetPos());
+            else
+                audioSource.transform.position = Owner.GetPos();
         }
         else
         {
